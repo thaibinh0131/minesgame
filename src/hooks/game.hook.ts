@@ -24,67 +24,20 @@ const {
   immediate: false,
 });
 
-export const useGame = () => {
-  const isGameEnded = computed(() => status.value === GameStatus.ended);
-  const openedCellsNumber = computed(() => {
-    return board.value.reduce((total, row) => {
-      const totalOpenedCellsOfRow = row.filter((el) => el.isOpened).length;
-      return total + totalOpenedCellsOfRow;
-    }, 0);
-  });
-  const handleFirstCellClick = () => {
-    timeInSeconds.value = 0;
-    status.value = GameStatus.running;
-    startCountTime();
-  };
-  const initializeGame = () => {
-    status.value = GameStatus.waiting;
-    const initializedBoard = generateBoardWithMinesForGame(
-      numOfRowsAndCols.value,
-      numOfRowsAndCols.value,
-      MAX_MINES_AND_FLAGS
-    );
-    console.debug({ initializedBoard });
-    board.value = cloneDeep(initializedBoard);
-    pauseCountTime();
-    timeInSeconds.value = 0;
-  };
+const isGameEnded = computed(() => status.value === GameStatus.ended);
+const openedCellsNumber = computed(() => {
+  return board.value.reduce((total, row) => {
+    const totalOpenedCellsOfRow = row.filter((el) => el.isOpened).length;
+    return total + totalOpenedCellsOfRow;
+  }, 0);
+});
 
-  const setEndGame = () => {
-    status.value = GameStatus.ended;
-    pauseCountTime();
-  };
-  const handleOpenCell = (cell: CellData) => {
-    if (isGameEnded.value) return;
+const setEndGame = () => {
+  status.value = GameStatus.ended;
+  pauseCountTime();
+};
 
-    const clonedBoard = JSON.parse(JSON.stringify(board.value));
-    const current = JSON.parse(
-      JSON.stringify(board.value[cell.rowIndex][cell.colIndex])
-    );
-    const numberOfMinesNearby = findMinesNearby(clonedBoard, current);
-
-    if (current.hasMine) {
-      board.value[cell.rowIndex][cell.colIndex].isOpened = true;
-
-      setEndGame();
-      return;
-    } else {
-      if (cell.hasFlag || cell.isOpened) return;
-      if (openedCellsNumber.value === 0) {
-        handleFirstCellClick();
-      }
-
-      clonedBoard[cell.rowIndex][cell.colIndex].isOpened = true;
-      clonedBoard[cell.rowIndex][cell.colIndex].minesSurroundCount =
-        numberOfMinesNearby;
-      board.value = JSON.parse(JSON.stringify(clonedBoard));
-
-      if (numberOfMinesNearby === 0 && !current.hasMine) {
-        openCellDoNotHaveMineNearBy(cell);
-      }
-    }
-  };
-
+export const useCell = () => {
   const openCellDoNotHaveMineNearBy = (cell: CellData) => {
     const deltaRow = [-1, -1, -1, 0, 1, 1, 1, 0];
     const deltaCol = [-1, 0, 1, 1, 1, 0, -1, -1];
@@ -106,6 +59,59 @@ export const useGame = () => {
       }
     }
   };
+  const handleOpenCell = (cell: CellData) => {
+    const handleFirstCellClick = () => {
+      timeInSeconds.value = 0;
+      status.value = GameStatus.running;
+      startCountTime();
+    };
+    if (isGameEnded.value) return;
+
+    const clonedBoard = JSON.parse(JSON.stringify(board.value));
+    const current = JSON.parse(
+      JSON.stringify(board.value[cell.rowIndex][cell.colIndex])
+    );
+    const numberOfMinesNearby = findMinesNearby(clonedBoard, current);
+
+    if (current.hasMine) {
+      board.value[cell.rowIndex][cell.colIndex].isOpened = true;
+
+      setEndGame();
+      return;
+    } else {
+      if (cell.hasFlag || cell.isOpened) return;
+      if (openedCellsNumber.value === 0) {
+        handleFirstCellClick();
+      }
+
+      board.value[cell.rowIndex][cell.colIndex].isOpened = true;
+      board.value[cell.rowIndex][cell.colIndex].minesSurroundCount =
+        numberOfMinesNearby;
+      // board.value = JSON.parse(JSON.stringify(clonedBoard));
+
+      if (numberOfMinesNearby === 0 && !current.hasMine) {
+        openCellDoNotHaveMineNearBy(cell);
+      }
+    }
+  };
+
+  return {
+    handleOpenCell,
+  };
+};
+
+export const useGame = () => {
+  const initializeGame = () => {
+    status.value = GameStatus.waiting;
+    const initializedBoard = generateBoardWithMinesForGame(
+      numOfRowsAndCols.value,
+      numOfRowsAndCols.value,
+      MAX_MINES_AND_FLAGS
+    );
+    board.value = cloneDeep(initializedBoard);
+    pauseCountTime();
+    timeInSeconds.value = 0;
+  };
   watch(openedCellsNumber, (value) => {
     if (
       value ===
@@ -126,7 +132,6 @@ export const useGame = () => {
 
   return {
     initializeGame,
-    handleOpenCell,
     timeInSeconds,
     board,
     flagsLeft,

@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash-es";
 
 import type { CellData } from "@/types";
 import type { PropType } from "vue";
-import { useGame } from "@/hooks";
+import { useCell } from "@/hooks";
 
 const props = defineProps({
   cell: {
@@ -12,12 +12,15 @@ const props = defineProps({
   },
 });
 
-const { handleOpenCell } = useGame();
+const { handleOpenCell } = useCell();
 
 watch(
   () => props.cell,
   () => {
     console.debug("cell change");
+  },
+  {
+    deep: true,
   }
 );
 </script>
@@ -30,9 +33,6 @@ watch(
       'cell',
       {
         'cell--opened': cell.isOpened,
-      },
-      {
-        'cell--has-boom': cell.hasMine,
       },
     ]"
   >
@@ -52,9 +52,5 @@ watch(
 }
 .cell--opened {
   @apply bg-white #{!important};
-}
-
-.cell--has-boom {
-  @apply bg-red-500 #{!important};
 }
 </style>

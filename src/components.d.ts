@@ -33,7 +33,6 @@ declare module 'vue' {
     NumberValueSplit: typeof import('./components/NumberValueSplit.vue')['default']
     PlusIcon: typeof import('./components/Icons/PlusIcon.vue')['default']
     Row: typeof import('./components/Row.vue')['default']
-    Rows: typeof import("./components/Row.vue")["default"];
     SearchIcon: typeof import('./components/Icons/SearchIcon.vue')['default']
   }
 }

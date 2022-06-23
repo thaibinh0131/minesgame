@@ -1,6 +1,6 @@
 # Mines game base on Vue3
 
-Pet project to practice vue3, typescript and nodejs (NestJS) for backend development
+Pet project to practice vue3, typescript for frontend
 
 ## Recommended IDE Setup
 

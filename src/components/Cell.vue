@@ -34,6 +34,9 @@ watch(
       {
         'cell--opened': cell.isOpened,
       },
+      {
+        'cell--has-boom': cell.hasMine,
+      },
     ]"
   >
     <span v-if="cell.hasMine"><BoomIcon v-if="cell.isOpened" /></span>
@@ -52,5 +55,9 @@ watch(
 }
 .cell--opened {
   @apply bg-white #{!important};
+}
+
+.cell--has-boom {
+  @apply bg-red-500 #{!important};
 }
 </style>

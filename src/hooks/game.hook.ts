@@ -67,15 +67,12 @@ export const useCell = () => {
     };
     if (isGameEnded.value) return;
 
-    const clonedBoard = JSON.parse(JSON.stringify(board.value));
-    const current = JSON.parse(
-      JSON.stringify(board.value[cell.rowIndex][cell.colIndex])
-    );
-    const numberOfMinesNearby = findMinesNearby(clonedBoard, current);
+    const current = board.value[cell.rowIndex][cell.colIndex];
+
+    const numberOfMinesNearby = findMinesNearby(board.value, current);
 
     if (current.hasMine) {
       board.value[cell.rowIndex][cell.colIndex].isOpened = true;
-
       setEndGame();
       return;
     } else {
@@ -84,10 +81,11 @@ export const useCell = () => {
         handleFirstCellClick();
       }
 
-      board.value[cell.rowIndex][cell.colIndex].isOpened = true;
-      board.value[cell.rowIndex][cell.colIndex].minesSurroundCount =
-        numberOfMinesNearby;
-      // board.value = JSON.parse(JSON.stringify(clonedBoard));
+      board.value[cell.rowIndex][cell.colIndex] = {
+        ...board.value[cell.rowIndex][cell.colIndex],
+        isOpened: true,
+        minesSurroundCount: numberOfMinesNearby,
+      };
 
       if (numberOfMinesNearby === 0 && !current.hasMine) {
         openCellDoNotHaveMineNearBy(cell);

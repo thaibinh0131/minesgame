@@ -48,14 +48,6 @@ const onConnectError = (error: any) => {
     <div class="w-full">
       <RouterView />
     </div>
-    <button @click="showModalConnect = true">Open modal connect</button>
-     <ConnectComponent
-      :chain="DEFAULT_CHAIN_ID"
-      v-model="showModalConnect"
-      :cached-connector="cachedConnector"
-      @response="onConnectResponse"
-      @error="onConnectError"
-    />
   </div>
 </template>
 

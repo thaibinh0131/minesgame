@@ -4,7 +4,7 @@
   <div
     class="market-page w-full h-screen flex items-center justify-center text-6xl"
   >
-    VUE3 TEMPLATE
+    <Board />
   </div>
 </template>
 

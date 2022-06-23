@@ -10,9 +10,13 @@ declare module 'vue' {
     BaseCard: typeof import('./components/BaseCard.vue')['default']
     BaseInputNumber: typeof import('./components/BaseInputNumber.vue')['default']
     BaseModal: typeof import('./components/BaseModal.vue')['default']
+    Board: typeof import('./components/Board.vue')['default']
+    BoomIcon: typeof import('./components/Icons/BoomIcon.vue')['default']
+    Cell: typeof import('./components/Cell.vue')['default']
     CurrencyIcon: typeof import('./components/Icons/CurrencyIcon.vue')['default']
     DotIcon: typeof import('./components/Icons/DotIcon.vue')['default']
     ExternalLinkIcon: typeof import('./components/Icons/ExternalLinkIcon.vue')['default']
+    FlagIcon: typeof import('./components/Icons/FlagIcon.vue')['default']
     Heading1: typeof import('./components/Heading1.vue')['default']
     Heading2: typeof import('./components/Heading2.vue')['default']
     InfoIcon: typeof import('./components/Icons/InfoIcon.vue')['default']
@@ -28,6 +32,8 @@ declare module 'vue' {
     NumberValueLowerThan: typeof import('./components/NumberValueLowerThan.vue')['default']
     NumberValueSplit: typeof import('./components/NumberValueSplit.vue')['default']
     PlusIcon: typeof import('./components/Icons/PlusIcon.vue')['default']
+    Row: typeof import('./components/Row.vue')['default']
+    Rows: typeof import("./components/Row.vue")["default"];
     SearchIcon: typeof import('./components/Icons/SearchIcon.vue')['default']
   }
 }

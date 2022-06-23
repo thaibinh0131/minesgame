@@ -10,4 +10,5 @@ export const APP_ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT as string;
 export const SAVED_CONNECTOR_KEY = "SAVED_CONNECTOR";
 
 export const CONTRACT_INTERVAL = 15000; // ms
-export const APP_TITLE = import.meta.env.VITE_APP_TITLE
+export const APP_TITLE = import.meta.env.VITE_APP_TITLE;
+export const MAX_MINES_AND_FLAGS = 40;

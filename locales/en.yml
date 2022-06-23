@@ -1,0 +1,11 @@
+text:
+  main: Hello world
+message:
+  connect-wallet-rejected-error: User rejected request
+  connected-to-wrong-network: Connected to the wrong network
+  please-switch-to-network: "Please switch to {network}"
+  transaction-cancelled: Transaction Cancelled
+  transaction-failed: Transaction failed. Please check your information and try again.
+  unsupported-chain: Unsupported Chain
+  transaction-failed-with-error-msg: "Transaction failed with error: {error}"
+  not-enough-collateral: Your collateral is not enough to borrow this amount

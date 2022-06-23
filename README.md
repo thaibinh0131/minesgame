@@ -1,6 +1,6 @@
-# Vite-Vue3 Template
+# Mines game base on Vue3
 
-This template should help get you started developing with Vue 3 in Vite.
+Pet project to practice vue3, typescript and nodejs (NestJS) for backend development
 
 ## Recommended IDE Setup
 

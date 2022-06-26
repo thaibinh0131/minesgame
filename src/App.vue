@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useToast } from "vue-toastification";
-import { useInterval } from "@vueuse/core";
+import { useInterval, useScroll } from "@vueuse/core";
 import {
   DEFAULT_CHAIN_ID,
   CONTRACT_INTERVAL,
@@ -44,10 +44,8 @@ const onConnectError = (error: any) => {
 </script>
 
 <template>
-  <div class="app__wrapper">
-    <div class="w-full">
-      <RouterView />
-    </div>
+  <div ref="el" class="app__wrapper">
+    <div class="w-full"><DefaultHeader /> <RouterView /></div>
   </div>
 </template>
 

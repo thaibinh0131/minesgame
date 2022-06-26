@@ -35,7 +35,7 @@ watch(
   >
     <template #title>
       <div class="text-center">
-        <div class="text-center leading-5">
+        <div class="text-center leading-5 text-2xl font-bold">
           {{ title }}
         </div>
       </div>

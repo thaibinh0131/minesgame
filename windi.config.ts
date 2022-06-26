@@ -37,26 +37,7 @@ export default defineConfig({
         },
       },
       colors: {
-        "dark-blue": "#0079FE",
-        "light-gray": "#AFB4BE",
-        "dark-gray": "#607290",
-        "light-green": "#43D4A8",
-        "light-red": "#E95A63",
-        "dark-red": "#961484",
-        "card-dark": "#050510B2",
-        "middle-blue": "30D9FF",
-        neutral: {
-          main: "#23293B",
-          1: "#EAECEF",
-          7: "#607290",
-          8: "#4d5562",
-          9: "#272F3E",
-          10: "#050510",
-        },
-
-        icon: {
-          default: "#5C5F62",
-        },
+        primary: "#33C9C0",
       },
     },
     screens: {

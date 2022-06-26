@@ -17,6 +17,7 @@
     "axios": "^0.26.1",
     "bignumber.js": "^9.0.2",
     "cleave.js": "^1.6.0",
+    "date-fns": "^2.28.0",
     "ethers": "^5.6.2",
     "fiber-connect-package-v3": "^0.0.5",
     "fuse.js": "^6.5.3",

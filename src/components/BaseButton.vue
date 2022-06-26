@@ -68,5 +68,12 @@ const className = computed(() => {
   @apply focus:outline-none;
   @apply cursor-pointer;
   @apply select-none;
+  &--main {
+    @apply bg-primary text-white;
+    @apply min-w-120px;
+  }
+  &:disabled {
+    @apply cursor-not-allowed opacity-70;
+  }
 }
 </style>

@@ -33,6 +33,7 @@ onMounted(() => {
 
 <style lang="scss">
 .board {
+  @apply min-w-640px;
   &__header {
     @apply p-4;
     @apply text-base;

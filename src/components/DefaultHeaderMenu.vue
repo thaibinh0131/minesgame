@@ -16,7 +16,7 @@
 .default-header__menu {
   @apply flex items-center flex-col lg:flex-row;
   li {
-    @apply mr-0 lg:mr-6;
+    @apply mr-0 lg:mr-6 mb-4 lg:mb-0;
     a {
       @apply hover:text-black;
       @apply text-xl font-bold;

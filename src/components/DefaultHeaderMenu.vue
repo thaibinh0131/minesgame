@@ -3,11 +3,11 @@
     <li>
       <router-link to="/">Games</router-link>
     </li>
-    <li>
+    <!-- <li>
       <router-link to="/leader-board">LeaderBoard</router-link>
-    </li>
+    </li> -->
     <li>
-      <a>About me</a>
+      <a href="https://thaibinh0131-me.onrender.com" target="_blank">About me</a>
     </li>
   </ul>
 </template>
